@@ -15,11 +15,15 @@ namespace atlas {
         other.m_ptr = nullptr;
     }
 
-    template <typename T>
-    auto_ptr<T>& auto_ptr<T>::operator=(auto_ptr& other) {
+template <typename T>
+auto_ptr<T>& auto_ptr<T>::operator=(auto_ptr& other) {
+    if (this != &other) {  
+        delete m_ptr;
         m_ptr = other.m_ptr;
         other.m_ptr = nullptr;
     }
+    return *this;  
+}
 
     template <typename T>
     T& auto_ptr<T>::operator*() const {

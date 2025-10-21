@@ -42,12 +42,13 @@ namespace atlas {
         m_ptr = nullptr;
     }
 
+    
     template <typename T>
     void auto_ptr<T>::reset(T* p) {
-        T* temp = m_ptr;
-        m_ptr = p;
-        delete temp;
-        temp = nullptr;
+        if (m_ptr != p) { 
+            delete m_ptr;
+            m_ptr = p;
+        }
     }
     
 } // namespace atlas

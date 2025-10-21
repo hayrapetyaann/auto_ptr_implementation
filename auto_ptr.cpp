@@ -37,10 +37,12 @@ namespace atlas {
     }
 
     template <typename T>
-    T* auto_ptr<T>::release() {
-        delete m_ptr;
+    T* release() {
+        T* temp = m_ptr;
         m_ptr = nullptr;
+        return temp; 
     }
+
 
     
     template <typename T>
